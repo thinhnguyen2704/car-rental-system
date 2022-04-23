@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<title>Car Reservation</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .body {
+            margin-top: 22px;
+            width: 100%;
+        }
+
+        #navbar ul {
+            position: fixed;
+            list-style-type: none;
+            margin: auto;
+            padding: 0;
+            overflow: hidden;
+            padding: 14px 16px;
+            background-color: black;
+            text-decoration: none;
+            top: 0;
+            width: 100%;
+        }
+
+        #navbar li {
+            float: left;
+        }
+
+        #navbar li a {
+            color: white;
+            padding-top: 40px;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .companyName {
+            font-style: italic;
+        }
+
+        h1 {
+            margin-top: 111px;
+            width: 100%;
+            text-align: center;
+            font-size: 274%;
+        }
+
+        th {
+            font-size: 20px;
+        }
+
+        td {
+            text-align: center;
+            justify-content: center;
+            padding: 11px;
+        }
+
+        img {
+            width: 50%;
+        }
+
+        #CheckOut {
+            margin-left: 80%;
+        }
+
+        .button {
+            font-size: 111%;
+            background-color: navy;
+            color: whitesmoke;
+            border-radius: 11px;
+            cursor: pointer;
+        }
+
+        input.addToCart:hover {
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 144%; 
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <ul>
+            <li><a class='companyName'>Herzt-UTS</a></li>
+            <li style="padding-left: 31%;"><a>Car Rental Center</a></li><li></li>
+        </ul>
+    </div>
+    <h1>Car Reservation</h1>
+    <div class="body">
+        <div id="cart"></div>   
+        <button id="CheckOut" class="button" onclick="checkOut()">Check Out</button>
+    </div>
+<script>
+    //Load the reservation cart
+    $(document).ready(function() { 
+        displayCart(); 
+    });
+    // Display the cart
+    function displayCart() {
+        var cart = "";
+        if(sessionStorage.length > 0) {
+            cart += "<table><tr><th style='width: 50%;'>Thumbnail</th><th style='width: 274px;'>Vehicle</th><th style='width: 150px;'>Price Per Day</th><th>Rental Days</th><th>Action</th></tr>";
+            for (let i = 0; i < sessionStorage.length; i++) {
+                car = sessionStorage.key(i);
+                carObj = JSON.parse(sessionStorage.getItem(car));
+                cart += "<tr><td><img src=" + carObj.Thumbnail + "></td><td>" +
+                car + "</td><td class='PricePerDay'>" +
+                carObj.PricePerDay.valueOf() + "</td><td>" +  
+                "<form><input class='quantity' value='"+ carObj.RentalDays.valueOf() + "' type='number'></form></td><td>" + 
+                "<form><input id='price" + i + "' class='price' style='display: none;' value='" + car.valueOf() + 
+                "'><input class='button' value='Delete' type='button' onclick='deleteFromCart(this.form.price" + i + ".value)'></form></td>"
+                "</tr></table>";
+            }
+        } else {
+            cart += "<p>Reservation Cart is empty!</p>";
+        }
+        document.getElementById("cart").innerHTML = cart;
+    }
+
+    function checkOut(){
+        if(sessionStorage.length == 0) {
+            alert("Cart is empty! Please reserve at least 1 car! You will be redirected to the main page!");
+            location.replace("index.html");
+        }
+        if(checkInput()) {
+            bill();
+            location.replace("CheckOut.php");
+        }
+    }
+
+    function bill() {
+        var prices = document.getElementsByClassName("PricePerDay");
+        var rentalDays = document.getElementsByClassName("quantity");
+        var total = 0;
+        for (let index = 0; index < prices.length; index++) {
+            var car = sessionStorage.key(index);
+            carObj = JSON.parse(sessionStorage.getItem(car));
+            carObj.RentalDays = rentalDays[index].value;
+            sessionStorage.setItem(car, JSON.stringify(carObj));
+            window.localStorage.setItem(JSON.stringify(car), JSON.stringify(carObj));
+            console.log(localStorage, sessionStorage);
+            total += (prices[index].innerHTML.substr(1, prices[index].innerHTML.length) * rentalDays[index].value);
+        }
+        sessionStorage.setItem("Total", total);
+        window.localStorage.setItem("Total", total);
+    }
+
+    function checkInput() {
+        var array = document.getElementsByClassName("quantity");
+        for (let index = 0; index < array.length; index++) {
+            var element = array[index];
+            if (element.value <= 0) {
+                alert("Invalid quantity! Please try again.");
+                element.value = "1";
+                element.focus();
+                return false;
+            } else {
+                return true;
+            }
+        }
+    } 
+
+    //Delete the car from cart
+    function deleteFromCart(car) {
+        sessionStorage.removeItem(car);
+        displayCart();
+    }
+
+</script>
+</body>
+</html>

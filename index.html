@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<title>Herzt-UTS</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #navbar ul {
+            position: fixed;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            padding: 14px 16px;
+            background-color: black;
+            text-decoration: none;
+            top: 0;
+            width: 100%;
+        }
+
+        #navbar li {
+            float: left;
+        }
+
+        #navbar li a {
+            color: white;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 40px;
+        }
+
+        input.button {
+            color: black;
+            background-color: white;
+            text-align: center;
+            font-size: 111%;
+            font-weight: bold;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .body {
+            margin-left: 10%;
+            margin-top: 7%;
+            width: 80%;
+        }
+
+        .body:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .companyName {
+            font-style: italic;
+        }
+
+        /* Set CSS for car list */
+        .car {
+            float: left;
+            width: 25%;
+            height: 600px;
+            padding: 4px;
+            border: 1px solid black;
+            border-radius: 4px;
+            overflow: hidden;
+            white-space: pre;
+            text-overflow: ellipsis;
+        }
+
+        /* https://www.w3schools.com/css/tryit.asp?filename=trycss_website_layout_grid */
+        @media screen and (max-width:700px) {
+            .car {
+                width: 100%;
+            }
+        }
+
+        /* Set CSS for car images */
+        img {
+            max-width: 100%;
+            height: 250px;
+        }
+
+        .CarName {
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 20px;
+            font-style: bold;
+        }
+
+        input.addToCart {
+            color: whitesmoke;
+            background-color: black;
+            text-align: center;
+            font-size: 111%;
+            font-weight: bold;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        input.addToCart:hover {
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <ul>
+            <li><a class='companyName'>Herzt-UTS</a></li>
+            <li style="padding-left: 31%;"><a>Car Rental Center</a></li>
+            <li style="float: right; padding-top: 11px; padding-right: 44px;">
+                <form>
+                    <input class="button" type="button" value="Car Reservation"
+                        onclick="window.location.href='Reservation.html'" />
+                </form>
+            </li>
+        </ul>
+    </div>
+    <div class="body">
+       <div id="cars"></div>
+    </div>
+<script>
+    //Load the data from cars.xml and display in tabular format
+    $(document).ready(function() {
+        sessionStorage.removeItem("Total");
+        window.localStorage.removeItem("Total");
+        loadCars();
+    });
+    function loadCars() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                displayCars(this);
+            }
+        };
+        xhttp.open("GET", "cars.xml", true);
+        xhttp.send();
+    }
+    function displayCars(xml) {
+        var i;
+        var xmlDoc = xml.responseXML;
+        var cars = "";
+        var x = xmlDoc.getElementsByTagName("Car");
+        for (i = 0; i <x.length; i++) { 
+            cars += "<div class='car'>" +
+                "<img src='" + x[i].getElementsByTagName("Image")[0].childNodes[0].nodeValue + "'>" +
+                "<p class='CarName'>" +
+                        x[i].getElementsByTagName("Brand")[0].childNodes[0].nodeValue + "-" +
+                        x[i].getElementsByTagName("Model")[0].childNodes[0].nodeValue + "-" +
+                        x[i].getElementsByTagName("ModelYear")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='MileAge title'>Mile Age: " + x[i].getElementsByTagName("MileAge")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='FuelType title'>Fuel Type: " + x[i].getElementsByTagName("FuelType")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='Seats title'>Seats: " + x[i].getElementsByTagName("Seats")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='title'>Availability: " + x[i].getElementsByTagName("Availability")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='PricePerDay title'>Price per day: " + x[i].getElementsByTagName("PricePerDay")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<p class='title'>Description: " + x[i].getElementsByTagName("Description")[0].childNodes[0].nodeValue +
+                "</p>" +
+                "<form><input name='Model' value='" + x[i].getElementsByTagName("Model")[0].childNodes[0].nodeValue + "' style='display: none;'><input class='addToCart' value='Add to Cart' type='button' onclick='findCar(this.form.Model.value)'></form>" +
+                "</div>";
+        }
+        document.getElementById("cars").innerHTML = cars;
+    }
+
+    function findCar(model) {
+        var xhttp = new XMLHttpRequest();
+        var result;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                isAvailable(this, model);
+            }
+        };
+        xhttp.open("GET", "cars.xml", true);
+        xhttp.send();
+    }
+
+    // Validate the availability of the car before adding to cart.
+    function isAvailable(xml, model) {
+        var xmlDoc = xml.responseXML;
+        var car = $(xmlDoc).find("Car").has("Model:contains("+ model +")");
+        var avai = car[0].getElementsByTagName("Availability")[0].childNodes[0].nodeValue;
+        var image = car[0].getElementsByTagName("Image")[0].childNodes[0].nodeValue;
+        var vehicle =  car[0].getElementsByTagName("Brand")[0].childNodes[0].nodeValue + "-" +
+                        car[0].getElementsByTagName("Model")[0].childNodes[0].nodeValue + "-" +
+                        car[0].getElementsByTagName("ModelYear")[0].childNodes[0].nodeValue;
+        var mileAge = car[0].getElementsByTagName("MileAge")[0].childNodes[0].nodeValue;
+        var fuelType = car[0].getElementsByTagName("FuelType")[0].childNodes[0].nodeValue;
+        var seats =  car[0].getElementsByTagName("Seats")[0].childNodes[0].nodeValue;
+        var price = car[0].getElementsByTagName("PricePerDay")[0].childNodes[0].nodeValue;
+        var description = car[0].getElementsByTagName("Description")[0].childNodes[0].nodeValue;
+        var info = {Thumbnail: image.toString(), PricePerDay: price.toString(), MileAge: mileAge, FuelType: fuelType, Seats: seats, Description: description, RentalDays: "1"};
+        if (avai == "True") {
+            alert("Car added to cart successfully!");
+            sessionStorage.setItem(vehicle.toString(), JSON.stringify(info));
+        } else {
+            alert("Sorry, the car is not available now. Please try other cars!");
+        }
+    }
+</script>
+</body>
+</html>

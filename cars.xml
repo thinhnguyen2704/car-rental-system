@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cars>
+    <Car>
+        <Image>images/320i.jpg</Image>
+        <Category>Sedan</Category>
+        <Availability>True</Availability>
+        <Brand>BMW</Brand>
+        <Model>320i</Model>
+        <ModelYear>2019</ModelYear>
+        <MileAge>411</MileAge>
+        <FuelType>Diesel</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$440</PricePerDay>
+        <Description>The BMW 320i is available in a number of variants and body types that are powered by PULP fuel type(s). It has an estimated fuel consumption starting from 6.3L/100km for Sedan /PULP for the latest year the model was manufactured.</Description>
+    </Car>
+    <Car>
+        <Image>images/Camry.jpg</Image>
+        <Category>Sedan</Category>
+        <Availability>True</Availability>
+        <Brand>Toyota</Brand>
+        <Model>Camry</Model>
+        <ModelYear>2020</ModelYear>
+        <MileAge>274</MileAge>
+        <FuelType>Hybrid</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$274</PricePerDay>
+        <Description>The Camry is a great midsize car that hits all the marks. It boasts nimble handling, a comfortable ride, two strong engine choices, an upscale interior, and a user-friendly infotainment system. For its mix of quality and value, we named the Camry our 2020 Best Midsize Car for the Money.</Description>
+    </Car>
+    <Car>
+        <Image>images/Captiva.jpg</Image>
+        <Category>SUV</Category>
+        <Availability>True</Availability>
+        <Brand>Chevrolet</Brand>
+        <Model>Captiva</Model>
+        <ModelYear>2015</ModelYear>
+        <MileAge>111111</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>7</Seats>
+        <PricePerDay>$411</PricePerDay>
+        <Description>The Chevrolet Captiva is a compact crossover SUV developed by General Motors. The first generation was developed by GM Korea, based on the GM Theta platform and derived from the S3X concept car revealed in 2004. The crossover straddles the entry-level SUV segments.</Description>
+    </Car>
+    <Car>
+        <Image>images/Cherokee.jpg</Image>
+        <Category>SUV</Category>
+        <Availability>True</Availability>
+        <Brand>Jeep</Brand>
+        <Model>Cherokee</Model>
+        <ModelYear>2017</ModelYear>
+        <MileAge>27411</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>7</Seats>
+        <PricePerDay>$411</PricePerDay>
+        <Description>The Jeep Cherokee is a line of American vehicles sold by Jeep under various vehicle classes. Originally sold as a variant of the popular Jeep Wagoneer, the Cherokee has evolved from a full-size SUV to one of the first compact SUVs and eventually into its current incarnation as a crossover SUV.</Description>
+    </Car>
+    <Car>
+        <Image>images/Civic.jpg</Image>
+        <Category>Sedan</Category>
+        <Availability>True</Availability>
+        <Brand>Honda</Brand>
+        <Model>Civic</Model>
+        <ModelYear>2017</ModelYear>
+        <MileAge>110</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$110</PricePerDay>
+        <Description>The Honda Civic is a line of cars manufactured by Honda.</Description>
+    </Car>
+    <Car>
+        <Image>images/GLC.jpg</Image>
+        <Category>SUV</Category>
+        <Availability>True</Availability>
+        <Brand>Mercedes-Benz</Brand>
+        <Model>GLC</Model>
+        <ModelYear>2015</ModelYear>
+        <MileAge>505</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>7</Seats>
+        <PricePerDay>$444</PricePerDay>
+        <Description>The GLC shares underpinnings with the award-winning C-Class sedan. It's a common formula for faux-wheel drives, to base a roomier and high-riding vehicle on a sedan sibling. The up-market interior, despite its similarities to the C-Class, is a bespoke design. Some may waver between a C-Class wagon and the GLC.</Description>
+    </Car>
+    <Car>
+        <Image>images/Golf.jpg</Image>
+        <Category>Wagon</Category>
+        <Availability>True</Availability>
+        <Brand>Volkswagen</Brand>
+        <Model>Golf</Model>
+        <ModelYear>2014</ModelYear>
+        <MileAge>44444</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$97</PricePerDay>
+        <Description>The Golf is unexpectedly a fuel efficient car. It houses a highly-responsive turbocharged 1.4L TSI engine, which delivers 110kW of power and 250Nm of torque. And with super low fuel consumption of 5.7L/100km for manual and only 5.4L/100km for DSG, you get the best of both worlds where performance meets efficiency</Description>
+    </Car>
+    <Car>
+        <Image>images/Jimny.jpg</Image>
+        <Category>SUV</Category>
+        <Availability>False</Availability>
+        <Brand>Suzuki</Brand>
+        <Model>Jimmy</Model>
+        <ModelYear>2013</ModelYear>
+        <MileAge>11427</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$111</PricePerDay>
+        <Description>Uncompromising features define the Jimny as a serious off-road machine — a robust rigid ladder frame, three ample body angles and 3-link rigid axle suspensions with coil springs. From the very first generation, the Jimny has always featured a ladder frame that offers a solid foundation for serious off-road performance.</Description>
+    </Car>
+    <Car>
+        <Image>images/Sonata.jpg</Image>
+        <Category>Sedan</Category>
+        <Availability>False</Availability>
+        <Brand>Hyundai</Brand>
+        <Model>Sonata</Model>
+        <ModelYear>2019</ModelYear>
+        <MileAge>1111</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>5</Seats>
+        <PricePerDay>$110</PricePerDay>
+        <Description>For 2018, the Sonata has been completely restyled ahead of the A-pillar to bring it in line with more recent models like the i30 and Kona. This means the new cascading corporate grille, sleeker headlights which are mounted lower due to a reshaped bonnet, bumper and front guards. </Description>
+    </Car>
+    <Car>
+        <Image>images/X-trail.jpg</Image>
+        <Category>SUV</Category>
+        <Availability>False</Availability>
+        <Brand>Nissan</Brand>
+        <Model>X-Trail</Model>
+        <ModelYear>2018</ModelYear>
+        <MileAge>1000</MileAge>
+        <FuelType>Petrol</FuelType>
+        <Seats>7</Seats>
+        <PricePerDay>$411</PricePerDay>
+        <Description>The Nissan X-Trail is a compact crossover SUV produced by the Japanese automaker Nissan since 2000. In third generation, it is a three row SUV.</Description>
+    </Car>
+    <!-- <Car>
+        <Image></Image>
+        <Category></Category>
+        <Availability></Availability>
+        <Brand></Brand>
+        <Model></Model>
+        <ModelYear></ModelYear>
+        <MileAge></MileAge>
+        <FuelType></FuelType>
+        <Seats></Seats>
+        <PricePerDay></PricePerDay>
+        <Description></Description>
+    </Car> -->
+</Cars>

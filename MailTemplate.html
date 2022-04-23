@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<div>
+    <div>Dear FIRSTNAME LASTNAME, </div>
+    <p id="total">Thank you for your booking at Hertz-UTS, the total cost is $TOTAL</p>
+    <p></p>
+    <div id="details">
+    </div>
+    <div>----------------------------------------------------</div>
+    <div>
+        <p>We are looking forward to welcoming you in the future.</p>
+    </div>
+    <div>Kind regards, <br>Hertz-UTS</div>
+</div>
+<script>
+    document.getElementById("total").innerText = "Thank you for your booking at Hertz-UTS, the total cost is $" + window.localStorage.getItem("Total");
+    window.localStorage.removeItem("Total");
+    var details = "";
+        for (let i = 0; i < window.localStorage.length; i++) {
+            car = window.localStorage.key(i);
+            if (car != "Total"){
+                carObj = JSON.parse(window.localStorage.getItem(car));
+                details += "<p>Model: " + car +
+                "</p><br><p>Mile age: " + carObj.MileAge +
+                "</p><br><p>Fuel type: " + carObj.FuelType +
+                "</p><br><p> Seats: " + carObj.Seats +
+                "</p><br><p>Price per day: " + carObj.PricePerDay +
+                "</p><br><p>Rental days: " + carObj.RentalDays +
+                "</p><br><p>Description: " + carObj.Description + "</p><br>";
+            }
+        }
+    document.getElementById("details").innerHTML = details;
+</script>
+</body>
+</html>
