@@ -10,10 +10,12 @@ Once the customers have finished their reservation, a confirmation email will be
   Display the cars for users to select.
   
 ### Check availability
-  When the customer clicks the "Add to cart" button, the system will check the availability of that car. If it's available, add the car to the reservation shopping cart and prompt success
+  When the customer clicks the "Add to cart" button, the system will check the availability of that car. If it's available, add the car to the reservation shopping cart and prompt success.
+  
   <img width="301" alt="image" src="https://user-images.githubusercontent.com/20553722/215366897-9bfb0a6c-b078-4d04-bb2c-e79868f9eed0.png">
   
   Otherwise, alert the customer that "Sorry, the car is not available. Please try the other cars." 
+  
   <img width="298" alt="image" src="https://user-images.githubusercontent.com/20553722/215366979-26e8ea7e-a262-40ad-9a23-dd6f109e9447.png">
 
 ### View reservation shopping cart
