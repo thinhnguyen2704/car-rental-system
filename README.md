@@ -6,7 +6,7 @@ Once the customers have finished their reservation, a confirmation email will be
 ## Functionalities
 
 ### Show all vehicles 
-<img width="653" alt="image" src="https://user-images.githubusercontent.com/20553722/215366487-95103252-c507-4842-bd57-661f1c10064d.png">
+  <img width="653" alt="image" src="https://user-images.githubusercontent.com/20553722/215366487-95103252-c507-4842-bd57-661f1c10064d.png">
   Display the cars for users to select.
   
 ### Check availability
@@ -19,8 +19,8 @@ Once the customers have finished their reservation, a confirmation email will be
   <img width="298" alt="image" src="https://user-images.githubusercontent.com/20553722/215366979-26e8ea7e-a262-40ad-9a23-dd6f109e9447.png">
 
 ### View reservation shopping cart
-  When the customers click on the "Car Reservation" button on the top-right corner of the main page. They will be prompted to the shopping cart list.
   <img width="480" alt="image" src="https://user-images.githubusercontent.com/20553722/215367113-43bc3470-e051-49ff-82d9-241f4a92d045.png">
+  When the customers click on the "Car Reservation" button on the top-right corner of the main page. They will be prompted to the shopping cart list.
 
 ### Checkout page
   <img width="441" alt="image" src="https://user-images.githubusercontent.com/20553722/215367378-fb812119-55a8-49fc-aa56-0c6e1218a6c1.png">
